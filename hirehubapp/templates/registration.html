@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+		
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form name="registration" method="post" action="{% url 'registration' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+						<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+
+						<div class="form-group" >
+							<select class="form-control" id="userType"  name="userType">
+								<option>---Select User Type</option>
+								<option value="company">Company</option>
+								<option value="applicant">Applicant</option>
+							</select>
+						</div>
+                            <input class="form-control" type="text" placeholder="First Name" name="fname">
+                  
+                            <input class="form-control" type="text" placeholder="Last Name" name="lname">
+                  
+                            <input class="form-control" type="email" placeholder="Email" name="email">
+                  
+                            <input class="form-control" type="text" name="mobile" placeholder="Mobile">
+                  
+                            <input class="form-control" type="text" name="address" placeholder="Address">
+                  
+                            <input class="form-control" type="text" name="city" placeholder="City">
+                  
+                            <input class="form-control" type="text" name="state" placeholder="State">
+                  
+                            <input class="form-control" type="text" name="zipcode" placeholder="ZIP Code">
+                  
+                            <input class="form-control" type="password" name="password" placeholder="Password">
+                  
+                            <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password">
+
+						<button type="submit" class="btn btn-primary">Register</button>
+						<p>Already Have An Account <a href="{% url 'login' %}">Login</a></p>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- login section End -->	
+		
+{% endblock %}

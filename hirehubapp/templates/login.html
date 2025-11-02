@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+		
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form name="login" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+						<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+
+						<input type="email" id="email" name="email" class="form-control input-lg" placeholder="Email">
+
+						<input type="password" id="password" name="password"class="form-control input-lg" placeholder="Password">
+						<label><a href="">Forget Password?</a></label>
+						<button type="submit" class="btn btn-primary">Login</button>
+						<p>Have't Any Account <a href="{% url 'registration' %}">Create An Account</a></p>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- login section End -->	
+		
+{% endblock %}

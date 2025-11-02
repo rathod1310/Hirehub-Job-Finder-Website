@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+		<!-- Inner Banner -->
+		<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+			<div class="container">
+				<div class="caption">
+					<h2>Get your jobs</h2>
+					<p>Get your Popular jobs <span>202 New job</span></p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="jobs">
+			<div class="container">
+				<div class="row heading">
+					<h2>Search Your Job</h2>
+					<p>Here, List Of the All Jobs...!</p>
+				</div>
+		
+				<div class="companies">
+					  {% for jobs in jobs %}
+					<div class="company-list">
+						<div class="row">
+							<div class="col-md-2 col-sm-2">
+								<div class="company-logo"style="width: 150px; height: 150px; color: #da0833; font-weight: bold; text-align: center; line-height: 150px; border-radius: 50%; display: inline-block; font-size: 150px; margin-top: 10px;">
+								    {{ jobs.company_name|slice:":1"|upper }}
+								</div>
+							</div>
+							<div class="col-md-8 col-sm-8">
+								<div class="company-content">
+									<h3>{{ jobs.title }}</h3>
+									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ jobs.company_name }}</span>
+										<span class="company-location"><i class="fa fa-map-marker"></i> {{ jobs.city }}</span>
+										<span class="company-name"><i class="fa fa-calendar"></i>{{ jobs.jobtype }}</span>
+										<span class="company-name"><i class="fa fa-database"></i>{{ jobs.skills }}</span>
+										<span class="company-location"><i class="fa fa-plus-square"></i> {{ jobs.experience}} +Years</span>
+										<span class="company-name"><i class="fa fa-map-marker"></i>{{ jobs.category }}</span>
+										<span class="package"><i>₹</i>{{ jobs.salary }} Per Month</span>
+										<span class="package"><i class="fa fa-clock-o"></i>Posted Date:- {{ jobs.posted_at|date:"d-m-Y" }}</span></p>
+										<span class="company-name"><i class="fa fa-briefcase"></i>{{ jobs.description }}</span>
+								</div>
+							</div>
+							<div class="col-md-2 col-sm-2">
+								{% if jobs.job_id in applied_job_ids %}
+								    <span class="service-tag">Applied</span>
+								{% else %}
+								    <a class="btn view-job" href="{% url 'apply_job' jobs.pk %}">Apply</a>
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+					  {% endfor %}
+				</div>
+			</div>
+		</section>
+
+
+{% endblock %}

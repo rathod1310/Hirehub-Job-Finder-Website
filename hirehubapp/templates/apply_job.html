@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+		
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form name="apply_job" method="post" action="#" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+
+                           <input type="text" class="form-control" id="job_id" value="{{ jobs.job_id }}"
+                                name="job_id" readonly>
+
+                            <input type="text" class="form-control" id="company_name" value="{{ jobs.company_name }}"
+                                name="company_name" readonly>
+                            
+                            <input type="text" class="form-control" id="title" value="{{ jobs.title }}" name="title"
+                                readonly>
+
+                            <input type="text" class="form-control" id="name" value="{{ user.fname }} {{ user.lname }}" name="name">
+                     
+                            
+                            <input type="email" class="form-control" id="email" value="{{ user.email }}" name="email"
+                               >
+                     
+
+                            <input type="tel" class="form-control" id="mobile" value="{{ user.mobile }}" name="mobile"
+                               >
+         
+                           
+                            <input type="text" class="form-control" id="address" value="{{ user.address }}" name="address"
+                               >
+    
+                          
+                            <input type="text" class="form-control" id="city" value="{{ user.city }}" name="city">
+     
+                         
+                            <input type="text" class="form-control" id="pincode" value="{{ user.zipcode }}" name="pincode"
+                               >
+ 
+                            
+                            <input type="file" class="form-control-file" id="resume" name="resume" required
+                                accept=".pdf, .doc, .docx">                  
+
+						<button type="submit" class="btn btn-primary">Apply</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- login section End -->	
+		
+{% endblock %}

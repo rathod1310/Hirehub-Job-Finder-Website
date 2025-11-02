@@ -1,0 +1,49 @@
+{% extends 'company/base.html' %}
+{% block content %}
+		<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+		<div class="container">
+			<div class="caption">
+				<h2>Post Your Jobs Here !</h2>
+			</div>
+		</div>
+	</section>
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form name="post_job" method="post" action="{% url 'post_job' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+					
+					<input class="form-control" type="text" placeholder="Company Name" name="company_name" value="{{ users.fname }} {{ users.lname }}" readonly>
+				
+                        <input class="form-control" type="text" placeholder="Title" name="title">
+              
+                        <input class="form-control" type="text" placeholder="City" name="city">
+              
+                        <input class="form-control" type="text" name="description" placeholder="Description">
+              
+                        <input class="form-control" type="number" name="salary" placeholder="Salary">
+              
+                        <input class="form-control" type="text" name="jobtype" placeholder="Job Type(Intenship,Part-Time,Full Time)">
+              
+                        <input class="form-control" type="datetime-local" name="posted_at" placeholder="Posted Date">
+              
+                        <input class="form-control" type="text" name="skills" placeholder="Skills">
+              
+                        <input class="form-control" type="number" name="experience" placeholder="Experience">
+
+                        <input class="form-control" type="text" name="category" placeholder="Work Mode(Hybriod,On-Site,Remote)">
+                  
+
+						<button type="submit" class="btn btn-primary" style="background-color:#da0833">Post Job</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- login section End -->	
+		
+{% endblock %}

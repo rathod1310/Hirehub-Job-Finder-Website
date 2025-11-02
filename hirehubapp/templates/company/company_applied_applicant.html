@@ -1,0 +1,43 @@
+{% extends 'company/base.html' %}
+{% block content %}
+	
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+	<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+		<div class="container">
+			<div class="caption">
+				<h2>Jobs You've Applied</h2>
+			</div>
+		</div>
+	</section>
+	
+	<section class="jobs">
+		<div class="container">
+			<div class="row heading">
+				<p>Here Is All Jobs That You Can Applied..!</p>
+			</div>
+			<div class="companies">
+				{% for apply_jobs in apply_jobs %}
+					<div class="company-list">
+						<div class="row">
+							<div class="col-md-2 col-sm-2">
+								<div class="company-logo">
+									<img src="/static/img/google.png" class="img-responsive" alt="" />
+								</div>
+							</div>
+							<div class="col-md-10 col-sm-10">
+								<div class="company-content">
+									<h3>{{ apply_jobs.name }} Is Apply For {{ apply_jobs.title }}<a href=""><span class="full-time">Approved</span></a><br>
+										<a href=""><span class="full-time" style="background-color: darkred;">Reject</span></a></h3>
+									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ apply_jobs.company_name }}</span></p>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+		</div>
+	</section>
+
+
+
+	{% endblock %}

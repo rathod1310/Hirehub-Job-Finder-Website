@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+	
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+	<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+		<div class="container">
+			<div class="caption">
+				<h2>Jobs You've Applied</h2>
+			</div>
+		</div>
+	</section>
+	
+	<section class="jobs">
+		<div class="container">
+			<div class="row heading">
+				<p>Here Is All Jobs That You Can Applied..!</p>
+			</div>
+			<div class="companies">
+				{% if request.session.email %}
+					{% for apply_jobs in apply_jobs %}
+					<div class="company-list">
+						<div class="row">
+							<div class="col-md-2 col-sm-2">
+								<div class="company-logo"style="width: 150px; height: 150px; color: #da0833; font-weight: bold; text-align: center; line-height: 150px; border-radius: 50%; display: inline-block; font-size: 150px; margin-top: 10px;">
+								    {{ apply_jobs.title|slice:":1"|upper }}
+								</div>
+							</div>
+							<div class="col-md-10 col-sm-10">
+								<div class="company-content">
+									<h3>{{ apply_jobs.title }}<span class="full-time">Full Time</span><br>
+										<span class="full-time" style="background-color: darkcyan;">Status</span></h3>
+									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ apply_jobs.company_name }}</span>
+										<!-- <span class="company-name"><i class="fa fa-plus-square"></i></span> -->
+										<span class="company-name"><i class="fa fa-database"></i>+91 {{ apply_jobs.mobile }}</span>
+										<span class="company-name"><i class="fa fa-calendar"></i>{{ apply_jobs.email }}</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					{% else %}
+					<center><h3>Please Login To See Your Applied JObs....!!!</h3></center>
+					{% endif %}
+				</div>
+		</div>
+	</section>
+
+
+
+	{% endblock %}
