@@ -20,10 +20,12 @@ def show_applied_job(request):
 
 def show_job(request):
     jobs = PostJob.objects.all()
+    apply_jobs = Apply_Job.objects.all()
+    total_jobs = jobs.count()
     applied_job_ids = []
     if 'email' in request.session:
         applied_job_ids = Apply_Job.objects.filter(email=request.session['email']).values_list('job_id', flat=True)
-    return render(request, "show_job.html",{'jobs':jobs, 'applied_job_ids': applied_job_ids})
+    return render(request, "show_job.html",{'jobs':jobs, 'applied_job_ids': applied_job_ids,'total_jobs': total_jobs,'apply_jobs':apply_jobs})
 
 def company_applied_applicant(request):
     user = None
@@ -31,6 +33,17 @@ def company_applied_applicant(request):
         user=User.objects.get(email=request.session['email'])
     apply_jobs = Apply_Job.objects.filter(company_name=user)
     return render(request, "company/company_applied_applicant.html",{'apply_jobs':apply_jobs})
+
+def update_status(request, pk):
+    apply_job = Apply_Job.objects.get(pk=pk)
+
+    if request.method == "POST":
+        new_status = request.POST.get("status")
+        apply_job.status = new_status
+        apply_job.save()
+
+    return redirect("company_applied_applicant")
+
 
 def registration(request):
     if request.method=="POST":
@@ -109,6 +122,7 @@ def post_job(request):
                 category = request.POST['category']
                 )
         msg="Job Posted Successfully"
+        return redirect('company_show_all_jobs')
     return render(request, "company/post_job.html",{'msg':msg,'job_id': job_id,'users':users})
 
 def logout(request):
@@ -138,7 +152,7 @@ def apply_job(request,pk):
                 resume=request.FILES.get('resume'),
             )
             msg = "Job Applied Successfully"
-            return render(request, 'show_applied_job.html', {'msg': msg})
+            return redirect('show_applied_job')
         else:
             context = get_common_data(request)
             context.update({'user': user, 'jobs': jobs})
@@ -151,3 +165,15 @@ def apply_job(request,pk):
 def company_home(request):
     context = get_common_data(request)
     return render(request, "company/company-index.html",context)
+
+
+def search_jobs(request):
+    query = request.GET.get('q')  # get search text from form
+    
+    if query:
+        jobs = PostJob.objects.filter(title__icontains=query)  # search by title
+    else:
+        jobs = PostJob.objects.all()
+    msg="Oops ,No Result FOund.....!!!!"
+
+    return render(request, "show_job.html", {'jobs': jobs, 'query': query, 'msg': msg})

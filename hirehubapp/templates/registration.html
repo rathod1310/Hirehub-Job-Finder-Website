@@ -19,25 +19,25 @@
 								<option value="applicant">Applicant</option>
 							</select>
 						</div>
-                            <input class="form-control" type="text" placeholder="First Name" name="fname">
+                            <input class="form-control" type="text" placeholder="First Name" name="fname" required>
                   
-                            <input class="form-control" type="text" placeholder="Last Name" name="lname">
+                            <input class="form-control" type="text" placeholder="Last Name" name="lname"required>
                   
-                            <input class="form-control" type="email" placeholder="Email" name="email">
+                            <input class="form-control" type="email" placeholder="Email" name="email"required>
                   
-                            <input class="form-control" type="text" name="mobile" placeholder="Mobile">
+                            <input class="form-control" type="text" name="mobile" placeholder="Mobile"required>
                   
-                            <input class="form-control" type="text" name="address" placeholder="Address">
+                            <input class="form-control" type="text" name="address" placeholder="Address"required>
                   
-                            <input class="form-control" type="text" name="city" placeholder="City">
+                            <input class="form-control" type="text" name="city" placeholder="City"required>
                   
-                            <input class="form-control" type="text" name="state" placeholder="State">
+                            <input class="form-control" type="text" name="state" placeholder="State"required>
                   
-                            <input class="form-control" type="text" name="zipcode" placeholder="ZIP Code">
+                            <input class="form-control" type="text" name="zipcode" placeholder="ZIP Code"required>
                   
-                            <input class="form-control" type="password" name="password" placeholder="Password">
-                  
-                            <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password">
+                            <input class="form-control" type="password" name="password" placeholder="Password"required>
+							
+                            <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password"required>
 
 						<button type="submit" class="btn btn-primary">Register</button>
 						<p>Already Have An Account <a href="{% url 'login' %}">Login</a></p>

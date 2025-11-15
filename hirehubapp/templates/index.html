@@ -6,16 +6,17 @@
 			<div class="container">
 				<div class="caption">
 					<h2>Build Your Career</h2>
-					<form>
-						<fieldset>
-							<div class="col-md-10 col-sm-10 no-pad">
-								<input type="text" class="form-control border-right" placeholder="Skills, Designation, Companies" />
-							</div>
-							<div class="col-md-2 col-sm-2 no-pad">
-								<input type="submit" class="btn seub-btn" value="submit" />
-							</div>
-						</fieldset>
-					</form>
+					<form method="GET" action="{% url 'search_jobs' %}">
+					<fieldset>
+						<div class="col-md-10 col-sm-10 no-pad">
+							<input type="text" name="q" value="{{ query }}" class="form-control border-right"
+								placeholder="Search by job title" />
+						</div>
+						<div class="col-md-2 col-sm-2 no-pad">
+							<input type="submit" class="btn seub-btn" value="Search" />
+						</div>
+					</fieldset>
+				</form>
 				</div>
 			</div>
 		</section>

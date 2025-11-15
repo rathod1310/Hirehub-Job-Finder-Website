@@ -83,6 +83,22 @@ DATABASES = {
 }
 
 
+#####MYSQL######
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',   # MySQL engine
+#         'NAME': 'hirehub',                    # Database name
+#         'USER': 'root',                         # MySQL username
+#         'PASSWORD': '',             # MySQL password
+#         'HOST': 'localhost',                    # Database host
+#         'PORT': '3306',                         # Default MySQL port
+#         'OPTIONS': {
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

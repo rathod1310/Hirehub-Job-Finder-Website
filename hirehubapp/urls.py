@@ -13,11 +13,15 @@ urlpatterns = [
 	path("registration", views.registration, name="registration"),
 	path("company_show_all_jobs", views.company_show_all_jobs, name="company_show_all_jobs"),
 	path("post_job", views.post_job, name="post_job"),
+    path('search_jobs/', views.search_jobs, name='search_jobs'),
 
 #######################COMPANY############################
 	path('logout/',views.logout,name='logout'),
 	path('apply_job/<int:pk>/', views.apply_job, name='apply_job'),
 
-	path("company_home", views.company_home, name="company_home")
+	path("company_home", views.company_home, name="company_home"),
+    path("update-status/<int:pk>/", views.update_status, name="update_status"),
+
+
 
 	]

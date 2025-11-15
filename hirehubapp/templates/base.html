@@ -7,7 +7,7 @@
         <title>Hire Hub</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
         <!-- All Plugin Css --> 
 		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 		
@@ -48,11 +48,12 @@
 							<li class="{% if request.resolver_match.url_name == 'show_job' %}active{% endif %}">
 							    <a href="{% url 'show_job' %}">Browse Jobs</a>
 							</li>
+							{% if request.session.email %}
 							<li class="{% if request.resolver_match.url_name == 'show_applied_job' %}active{% endif %}">
 							    <a href="{% url 'show_applied_job' %}">Applied Job</a>
 							</li>
 
-							{% if request.session.email %}
+							
 							 <li class="dropdown">
 							<a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><div style="width: 22px; height: 22px; background-color: #da0833; color: white; font-weight: bold; text-align: center; line-height: 22px; border-radius: 50%; border: 0.7px solid black; display: inline-block;">{{ request.session.fname|first|upper }}</div> &nbsp;{{request.session.fname}}</a>
 							<ul class="dropdown-menu">
@@ -119,9 +120,9 @@
 					<h4>Drop A Mail</h4>
 					<form>
 						<input type="text" class="form-control input-lg" placeholder="Your Name">
-						<input type="text" class="form-control input-lg" placeholder="Email...">
+						<input type="email" class="form-control input-lg" placeholder="Email...">
 						<textarea class="form-control" placeholder="Message"></textarea>
-						<button type="submit" class="btn btn-primary">Login</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
 				

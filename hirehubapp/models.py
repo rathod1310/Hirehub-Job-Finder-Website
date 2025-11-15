@@ -48,7 +48,14 @@ class PostJob(models.Model):
         return f"JOB-{str(next_number).zfill(3)}"
 
 class Apply_Job(models.Model):
-    job_id = models.CharField(max_length=20,null=True,default=None)
+    STATUS_CHOICES = [
+        ('Applied', 'Applied'),
+        ('Under Review', 'Under Review'),
+        ('Shortlisted', 'Shortlisted'),
+        ('Rejected', 'Rejected'),
+    ]
+
+    job_id = models.CharField(max_length=20, null=True, default=None)
     company_name = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -57,8 +64,12 @@ class Apply_Job(models.Model):
     address = models.TextField()
     city = models.CharField(max_length=255)
     pincode = models.CharField(max_length=10)
-    resume = models.FileField(upload_to='resumes/', blank=True, null=True)
+    status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='Applied')
+    resume = models.FileField(upload_to='resumes/', null=True, blank=True)
+
 
     def __str__(self):
         return f"{self.job_id} - {self.name} - {self.company_name} - {self.title}"
+
+
 
