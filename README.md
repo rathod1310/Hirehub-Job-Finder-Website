@@ -33,6 +33,3 @@ This system connects **Companies** and **Applicants**, allowing companies to pos
 - Django
 - sqllite3
 - Git & GitHub
-=======
-# Hirehub-Job-Finder-Website
->>>>>>> a112728152dda39180065c7c58988b155e9662d9
