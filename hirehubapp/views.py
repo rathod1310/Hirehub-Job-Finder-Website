@@ -177,3 +177,8 @@ def search_jobs(request):
     msg="Oops ,No Result FOund.....!!!!"
 
     return render(request, "show_job.html", {'jobs': jobs, 'query': query, 'msg': msg})
+
+
+def edit_profile(request):
+    users = User.objects.get(email=request.session['email'])
+    return render(request, "edit_profile.html",{'users':users})

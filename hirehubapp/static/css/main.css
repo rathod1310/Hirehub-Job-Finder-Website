@@ -48,6 +48,18 @@ background:#f4f5f7;
 .form-control:-ms-input-placeholder{color:#8796a9}
 .form-control::-webkit-input-placeholder{color:#8796a9}
 /*---------------Navigation Start-----------------*/
+.display-name-menu{
+    width: 22px; 
+    height: 22px; 
+    background-color:black; 
+    color: white; 
+    font-weight: bold; 
+    text-align: center; 
+    line-height: 22px; 
+    border-radius: 50%; 
+    border: 0.7px solid black; 
+    display: inline-block;
+}
 nav.navbar.bootsnav ul.nav > li > a {
     color: #6b797c;
 	font-weight:400;
@@ -60,6 +72,7 @@ color:#da0833;
 }
 nav.navbar.bootsnav ul.nav > li.active> a{
 color:#da0833;
+font-weight: 500;
 }
 @media (min-width: 1024px){
 nav.navbar li.dropdown ul.dropdown-menu {

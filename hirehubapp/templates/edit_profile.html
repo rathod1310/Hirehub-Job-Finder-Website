@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+		
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form name="registration" method="post" action="#" enctype="multipart/form-data">
+                    {% csrf_token %}
+						<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+
+						    <input class="form-control" type="text" placeholder="First Name" name="fname" value="{{users.fname}}" required>
+                  
+                            <input class="form-control" type="text" placeholder="Last Name" name="lname" value="{{users.lname}}" r required>
+                  
+                            <input class="form-control" type="email" placeholder="Email" name="email" value="{{users.email}}" r required>
+                  
+                            <input class="form-control" type="text" name="mobile" placeholder="Mobile" value="{{users.mobile}}" r required>
+                  
+                            <input class="form-control" type="text" name="address" placeholder="Address" value="{{users.address}}" r required>
+                  
+                            <input class="form-control" type="text" name="city" placeholder="City" value="{{users.city}}" r required>
+                  
+                            <input class="form-control" type="text" name="state" placeholder="State" value="{{users.state}}" r required>
+                  
+                            <input class="form-control" type="text" name="zipcode" placeholder="ZIP Code" value="{{users.zipcode}}" r required>
+
+						<button type="submit" class="btn btn-primary">Update</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<!-- login section End -->	
+		
+{% endblock %}
