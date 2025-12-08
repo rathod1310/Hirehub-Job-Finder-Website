@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # 💼 HireHub - Job Finder Website
 
 A self-created project developed using the **Django Framework**.
