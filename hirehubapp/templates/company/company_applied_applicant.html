@@ -14,14 +14,17 @@
 		<div class="container">
 			<div class="row heading">
 				<p>Here Is All Jobs That You Can Applied..!</p>
+				<div class="export-button">
+					<a href="{% url 'export_applied_jobs_csv' %}">Export To Csv</a>
+				</div>
 			</div>
 			<div class="companies">
 				{% for apply_jobs in apply_jobs %}
 					<div class="company-list">
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
-								<div class="company-logo">
-									<img src="/static/img/google.png" class="img-responsive" alt="" />
+								<div class="company-logo"style="width: 120px; height: 120px; color: #242c36; font-weight: bold; text-align: center; line-height: 120px; border-radius: 50%; display: inline-block; font-size: 120px; margin-top: 10px;">
+								    {{ apply_jobs.name|slice:":1"|upper }}
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">

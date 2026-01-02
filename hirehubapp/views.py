@@ -1,5 +1,8 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from .models import *
+import csv
+
 
 def get_common_data(request):
     common_data = {}
@@ -15,7 +18,10 @@ def home(request):
     return render(request, "index.html",context)
 
 def show_applied_job(request):
-    apply_jobs = Apply_Job.objects.all()
+    user = None
+    if 'email' in request.session:
+        user=User.objects.get(email=request.session['email'])
+    apply_jobs = Apply_Job.objects.filter(email=user.email)
     return render(request, "show_applied_job.html",{'apply_jobs':apply_jobs})
 
 def show_job(request):
@@ -182,3 +188,31 @@ def search_jobs(request):
 def edit_profile(request):
     users = User.objects.get(email=request.session['email'])
     return render(request, "edit_profile.html",{'users':users})
+
+
+
+def export_applied_jobs_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="applied_jobs.csv"'
+
+    writer = csv.writer(response)
+
+    # CSV Header
+    writer.writerow([
+        'Candidate Name',
+        'Job Title',
+        'Company Name',
+        'Status'
+    ])
+
+    jobs = Apply_Job.objects.all()
+
+    for job in jobs:
+        writer.writerow([
+            job.name,
+            job.title,
+            job.company_name,
+            job.status
+        ])
+
+    return response

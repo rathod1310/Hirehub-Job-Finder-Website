@@ -28,8 +28,8 @@
 				<div class="row">
 					<div class="col-md-2 col-sm-2">
 						<div class="company-logo"
-							style="width: 150px; height: 150px; color: #da0833; font-weight: bold; text-align: center; line-height: 150px; border-radius: 50%; display: inline-block; font-size: 150px; margin-top: 10px;">
-							{{ jobs.company_name|slice:":1"|upper }}
+							style="width: 150px; height: 150px; color: #242c36; font-weight: bold; text-align: center; line-height: 130px; border-radius: 50%; display: inline-block; font-size: 140px; margin-top: 10px;">
+							{{ jobs.title|slice:":1"|upper }}
 						</div>
 					</div>
 					<div class="col-md-8 col-sm-8">
@@ -42,7 +42,7 @@
 								<span class="company-location"><i class="fa fa-plus-square"></i> {{ jobs.experience}}
 									+Years</span>
 								<span class="company-name"><i class="fa fa-map-marker"></i>{{ jobs.category }}</span>
-								<span class="package"><i>₹</i>{{ jobs.salary }} Per Month</span>
+								<span class="package"><i class="fa fa-money"></i>₹ {{ jobs.salary }} Per Month</span>
 								<span class="package"><i class="fa fa-clock-o"></i>Posted Date:- {{ jobs.posted_at|date:"d-m-Y" }}</span>
 							</p>
 							<span class="company-name"><i class="fa fa-briefcase"></i>{{ jobs.description }}</span>
