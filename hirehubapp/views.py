@@ -2,6 +2,9 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 import csv
+import pandas as pd
+from django.contrib import messages
+from django.utils import timezone
 
 
 def get_common_data(request):
@@ -109,6 +112,77 @@ def company_show_all_jobs(request):
 
 
 def post_job(request):
+    users = User.objects.get(email=request.session['email'])
+    msg = ""
+    job_id = None
+
+    if request.method == "POST":
+
+        # =========================
+        # ✅ BULK UPLOAD (CSV/Excel)
+        # =========================
+        if 'bulk_apply' in request.FILES:
+            file = request.FILES['bulk_apply']
+
+            try:
+                if file.name.endswith('.csv'):
+                    df = pd.read_csv(file)
+                elif file.name.endswith('.xlsx'):
+                    df = pd.read_excel(file)
+                else:
+                    messages.error(request, "Only CSV or Excel files are allowed.")
+                    return redirect('post_job')
+
+                for _, row in df.iterrows():
+                    PostJob.objects.create(
+                        job_id=PostJob.get_next_job_id(),
+                        company_name=row['company_name'],
+                        title=row['title'],
+                        city=row['city'],
+                        description=row['description'],
+                        salary=row['salary'],
+                        jobtype=row['jobtype'],
+                        posted_at=timezone.now(),
+                        skills=row['skills'],
+                        experience=row['experience'],
+                    )
+
+                messages.success(request, "Bulk jobs uploaded successfully.")
+                return redirect('company_show_all_jobs')
+
+            except KeyError as e:
+                messages.error(request, f"Missing column in CSV: {e}")
+            except Exception as e:
+                messages.error(request, str(e))
+
+            return redirect('post_job')
+
+        # =========================
+        # ✅ MANUAL JOB POST
+        # =========================
+        else:
+            job_id = PostJob.get_next_job_id()
+            PostJob.objects.create(
+                job_id=job_id,
+                company_name=request.POST.get('company_name'),
+                title=request.POST.get('title'),
+                city=request.POST.get('city'),
+                description=request.POST.get('description'),
+                salary=request.POST.get('salary'),
+                jobtype=request.POST.get('jobtype'),
+                posted_at=request.POST.get('posted_at') or timezone.now(),
+                skills=request.POST.get('skills'),
+                experience=request.POST.get('experience'),
+            )
+
+            msg = "Job Posted Successfully"
+            return redirect('company_show_all_jobs')
+
+    return render(request, "company/post_job.html", {
+        'msg': msg,
+        'job_id': job_id,
+        'users': users
+    })
     users = User.objects.get(email=request.session['email'])
     msg = ""
     job_id = None

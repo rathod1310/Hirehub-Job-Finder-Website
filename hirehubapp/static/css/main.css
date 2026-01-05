@@ -943,6 +943,60 @@ background:#242c36;
 background:#da0833;
 color:#ffffff;
 }
+
+.upload-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Dashed container */
+.custom-file-upload {
+    padding: 18px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.custom-file-upload:hover {
+    background: #f0fafa;
+}
+
+/* Left side (file selector) */
+.file-left {
+    flex: 1; /* 👈 takes all remaining space */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.file-left i {
+    font-size: 22px;
+    color: teal;
+}
+
+.file-left span {
+    font-weight: 500;
+    color: teal;
+}
+
+.file-left input {
+    display: none;
+}
+
+/* Button */
+.upload-btn {
+    background: teal;
+    color: #fff;
+    padding: 6px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
 /*----------------Newsletter Style----------------*/
 .newsletter {
     text-align: center;

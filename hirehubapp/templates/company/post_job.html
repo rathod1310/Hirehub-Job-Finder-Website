@@ -11,6 +11,34 @@
 		<section class="login-wrapper">
 			<div class="container">
 				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+			<!-- Messages -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+			<span>&#128073; Bulk Upload Jobs (CSV / Excel)</span>
+		<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="custom-file-upload upload-row">
+        <label class="file-left">
+            <input type="file" name="bulk_apply" accept=".csv,.xlsx" required id="bulkFile">
+            <i class="fa fa-cloud-upload"></i>
+            <span id="file-name">Choose CSV / Excel File</span>
+        </label>
+
+        <button type="submit" class="upload-btn" title="Upload CSV/Excel File">
+            Upload
+        </button>
+		<a href="/static/jobs_demo.xlsx" class="upload-btn" title="Download Example CSV/Excel File" download> <i class="fa fa-cloud-download"></i></a>
+    </div>
+</form>
+
+		</div>
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
 					{% if msg %}
                         <p>{{msg}}</p>
                     {% endif %}
@@ -45,5 +73,11 @@
 			</div>
 		</section>
 		<!-- login section End -->	
-		
+		<script>
+document.getElementById('bulkFile').addEventListener('change', function () {
+    if (this.files.length > 0) {
+        document.getElementById('file-name').textContent = this.files[0].name;
+    }
+});
+</script>
 {% endblock %}
