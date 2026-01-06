@@ -1,10 +1,11 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
 from .models import *
 import csv
 import pandas as pd
 from django.contrib import messages
 from django.utils import timezone
+from django.views.decorators.cache import never_cache
 
 
 def get_common_data(request):
@@ -248,20 +249,45 @@ def company_home(request):
 
 
 def search_jobs(request):
-    query = request.GET.get('q')  # get search text from form
-    
-    if query:
-        jobs = PostJob.objects.filter(title__icontains=query)  # search by title
-    else:
-        jobs = PostJob.objects.all()
-    msg="Oops ,No Result FOund.....!!!!"
+    query = request.GET.get('q', '').strip()  # Get search text, default empty string
+    msg = ""
+    jobs = PostJob.objects.none()  # default empty queryset
 
-    return render(request, "show_job.html", {'jobs': jobs, 'query': query, 'msg': msg})
+    if query:
+        # Search by title (case-insensitive)
+        jobs = PostJob.objects.filter(title__icontains=query)
+        if not jobs.exists():
+            msg = "Oops, no results found!"
+    else:
+        msg = "Please enter a keyword to search."
+
+    return render(request, "show_job.html", {'jobs': jobs,'query': query,'msg': msg})
 
 
 def edit_profile(request):
+    if 'email' not in request.session:
+        return redirect('login')
+
     users = User.objects.get(email=request.session['email'])
-    return render(request, "edit_profile.html",{'users':users})
+
+    if request.method == 'POST':
+        users.fname = request.POST['fname']
+        users.lname = request.POST['lname']
+        users.email = request.POST['email']
+        users.mobile = request.POST['mobile']
+        users.address = request.POST['address']
+        users.city = request.POST['city']
+        users.state = request.POST['state']
+        users.zipcode = request.POST['zipcode']
+        users.save()
+        messages.success(request, "Profile updated successfully ✅")
+        return redirect('edit_profile')
+
+
+    context = get_common_data(request)
+    context.update({'users': users})
+    return render(request, 'edit_profile.html', context)
+
 
 
 
@@ -290,3 +316,47 @@ def export_applied_jobs_csv(request):
         ])
 
     return response
+
+def edit_job(request, pk):
+    if 'email' not in request.session:
+        return redirect('login')
+
+    user = User.objects.get(email=request.session['email'])
+    job = get_object_or_404(PostJob, pk=pk)
+
+    if request.method == 'POST':
+        job.title = request.POST['title']
+        job.city = request.POST['city']
+        job.description = request.POST['description']
+        job.salary = request.POST['salary']
+        job.jobtype = request.POST['jobtype']
+        job.skills = request.POST['skills']
+        job.experience = request.POST['experience']
+        job.category = request.POST['category']
+        job.save()
+        
+        return redirect('company_show_all_jobs')
+
+    context = get_common_data(request)
+    context.update({
+        'user': user,
+        'job': job
+    })
+    return render(request, 'company/edit_job.html', context)
+
+def delete_job(request, pk):
+    if 'email' not in request.session:
+        return redirect('login')
+
+    user = User.objects.get(email=request.session['email'])
+    job = get_object_or_404(PostJob, pk=pk)
+
+    # Build the full company name from the logged-in user
+    user_company_name = f"{user.fname} {user.lname}"
+
+    # Safety check (case-insensitive, ignores extra spaces)
+    if job.company_name.strip().lower() != user_company_name.strip().lower():
+        return redirect('company_show_all_jobs')
+
+    job.delete()
+    return redirect('company_show_all_jobs')

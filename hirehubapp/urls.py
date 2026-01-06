@@ -24,6 +24,9 @@ urlpatterns = [
     path("update-status/<int:pk>/", views.update_status, name="update_status"),
     path('export-applied-jobs/', views.export_applied_jobs_csv, name='export_applied_jobs_csv'),	
 
+	path("edit_job/<int:pk>/", views.edit_job, name="edit_job"),
+	path('delete_job/<int:pk>/', views.delete_job, name='delete_job'),
+
 
 
 	]

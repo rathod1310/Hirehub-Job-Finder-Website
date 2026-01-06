@@ -22,7 +22,7 @@
 								    {{ jobs.title|slice:":1"|upper }}
 								</div>
 							</div>
-							<div class="col-md-8 col-sm-8">
+							<div class="col-md-7 col-sm-7">
 								<div class="company-content">
 									<h3>{{ jobs.title }}</h3>
 									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ jobs.company_name }}</span>
@@ -30,13 +30,19 @@
 										<span class="company-name"><i class="fa fa-calendar"></i>{{ jobs.jobtype }}</span>
 										<span class="company-name"><i class="fa fa-database"></i>{{ jobs.skills }}</span>
 										<span class="company-location"><i class="fa fa-plus-square"></i> {{ jobs.experience}} +Years</span>
+										<span class="company-name"><i class="fa fa-map-marker"></i>{{ jobs.category }}</span>
 										<span class="package"><i>₹</i>{{ jobs.salary }} Per Month</span>
 										<span class="package"><i class="fa fa-clock-o"></i>Posted Date:- {{ jobs.posted_at|date:"d-m-Y" }}</span></p>
 										<span class="company-name"><i class="fa fa-briefcase"></i>{{ jobs.description }}</span>
 								</div>
 							</div>
 							<div class="col-md-2 col-sm-2">
-								    <a class="btn view-job" href="#">Edit</a>
+								    <a class="btn view-job" href="{% url 'edit_job' jobs.pk  %}">Edit</a>
+
+							</div>
+							<div class="col-md-1 col-sm-1">
+									<a href="{% url 'delete_job' jobs.pk %}" class="btn view-job" onclick="return confirm('Are you sure you want to delete this job?');">
+									<i class="fa fa-trash"></i></a>
 
 							</div>
 						</div>

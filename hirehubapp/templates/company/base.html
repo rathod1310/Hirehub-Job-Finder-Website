@@ -35,7 +35,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="{% url 'home' %}"><img src="/static/img/hirehub-logo.png" class="logo" alt=""></a>
+					<a class="navbar-brand" href="{% url 'company_home' %}"><img src="/static/img/hirehub-logo.png" class="logo" alt=""></a>
 				</div>
 				<!-- End Header Navigation -->
 
@@ -57,7 +57,7 @@
 
 							{% if request.session.email %}
 							 <li class="dropdown">
-							<a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><div style="width: 22px; height: 22px; background-color: #da0833; color: white; font-weight: bold; text-align: center; line-height: 22px; border-radius: 50%; border: 0.7px solid black; display: inline-block;">{{ request.session.fname|first|upper }}</div> &nbsp;{{request.session.fname}}</a>
+							<a class="nav-link dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false"><div style="width: 22px; height: 22px; background-color: #000000; color: white; font-weight: bold; text-align: center; line-height: 22px; border-radius: 50%; border: 0.7px solid black; display: inline-block;">{{ request.session.fname|first|upper }}</div> &nbsp;{{request.session.fname}}</a>
 							<ul class="dropdown-menu">
 								<li><a class="dropdown-toggle" href="{% url 'logout' %}" class="btn btn-primary">logout</a></li>
 								
@@ -83,11 +83,6 @@
 					<ul>
 						<li><a href="#">Browse Jobs</a></li>
 						<li><a href="#">Premium MBA Jobs</a></li>
-						<li><a href="#">Access Database</a></li>
-						<li><a href="#">Manage Responses</a></li>
-						<li><a href="#">Report a Problem</a></li>
-						<li><a href="#">Mobile Site</a></li>
-						<li><a href="#">Jobs by Skill</a></li>
 					</ul>
 				</div>
 				
@@ -96,34 +91,21 @@
 					<ul>
 						<li><a href="#">Browse Jobs</a></li>
 						<li><a href="#">Premium MBA Jobs</a></li>
-						<li><a href="#">Access Database</a></li>
-						<li><a href="#">Manage Responses</a></li>
-						<li><a href="#">Report a Problem</a></li>
-						<li><a href="#">Mobile Site</a></li>
-						<li><a href="#">Jobs by Skill</a></li>
 					</ul>
 				</div>
 				
 				<div class="col-md-3 col-sm-6">
 					<h4>Reach Us</h4>
-					<address>
 					<ul>
-					<li>1201, Murakeu Market, QUCH07<br>
-					United Kingdon</li>
 					<li>Email: Support@job.com</li>
 					<li>Call: 044 123 458 65879</li>
-					<li>Skype: job@skype</li>
-					<li>FAX: 123 456 85</li>
 					</ul>
-					</address>
 				</div>
 				
 				<div class="col-md-3 col-sm-6">
 					<h4>Drop A Mail</h4>
 					<form>
-						<input type="text" class="form-control input-lg" placeholder="Your Name">
 						<input type="text" class="form-control input-lg" placeholder="Email...">
-						<textarea class="form-control" placeholder="Message"></textarea>
 						<button type="submit" class="btn btn-primary">Login</button>
 					</form>
 				</div>

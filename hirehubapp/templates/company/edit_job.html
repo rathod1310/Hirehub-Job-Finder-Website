@@ -1,0 +1,48 @@
+{% extends 'company/base.html' %}
+{% block content %}
+		<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+		<div class="container">
+			<div class="caption">
+				<h2>Post Your Jobs Here !</h2>
+			</div>
+		</div>
+	</section>
+		<!-- login section start -->
+		<section class="login-wrapper">
+			<div class="container">
+				<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
+					{% if msg %}
+                        <p>{{msg}}</p>
+                    {% endif %}
+                    <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+					
+					<input class="form-control" type="text" placeholder="Company Name" name="company_name" value="{{ job.company_name }} {{ users.lname }}" readonly>
+				
+                        <input class="form-control" type="text" placeholder="Title" name="title" value="{{ job.title }}">
+              
+                        <input class="form-control" type="text" placeholder="City" name="city" value="{{ job.city }}">
+              
+                        <input class="form-control" type="text" name="description" placeholder="Description" value="{{ job.description }}">
+              
+                        <input class="form-control" type="number" name="salary" placeholder="Salary" value="{{ job.salary }}">
+              
+                        <input class="form-control" type="text" name="jobtype" placeholder="Job Type(Intenship,Part-Time,Full Time)" value="{{ job.jobtype }}">
+              
+                        <input class="form-control" type="datetime-local" name="posted_at" placeholder="Posted Date" value="{{ job.posted_at }}">
+              
+                        <input class="form-control" type="text" name="skills" placeholder="Skills" value="{{ job.skills }}">
+              
+                        <input class="form-control" type="number" name="experience" placeholder="Experience" value="{{ job.experience }}">
+
+                        <input class="form-control" type="text" name="category" placeholder="Work Mode(Hybriod,On-Site,Remote)" value="{{ job.category }}">
+                  
+
+						<button type="submit" class="btn btn-primary" style="background-color:#da0833">Post Job</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+{% endblock %}
