@@ -1222,4 +1222,562 @@ width:20%;
 }
 }
 
+/* HireHub professional theme */
+:root {
+    --hh-bg: #f6f8fb;
+    --hh-surface: #ffffff;
+    --hh-surface-soft: #eef5ff;
+    --hh-primary: #2563eb;
+    --hh-primary-dark: #1e3a8a;
+    --hh-accent: #0f766e;
+    --hh-accent-soft: #dff7f4;
+    --hh-heading: #172033;
+    --hh-text: #5b6678;
+    --hh-muted: #8491a5;
+    --hh-border: #e3e8f0;
+    --hh-danger: #dc2626;
+    --hh-shadow: 0 14px 38px rgba(23, 32, 51, 0.09);
+}
 
+body {
+    background: var(--hh-bg);
+    color: var(--hh-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--hh-heading);
+    letter-spacing: 0;
+}
+
+a,
+nav.navbar.bootsnav ul.nav > li > a {
+    color: var(--hh-text);
+}
+
+a:hover,
+nav.navbar.bootsnav ul.nav > li > a:hover,
+nav.navbar.bootsnav ul.nav > li.active > a {
+    color: var(--hh-primary);
+}
+
+nav.navbar.bootsnav {
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid var(--hh-border);
+    box-shadow: 0 10px 30px rgba(23, 32, 51, 0.06);
+}
+
+nav.navbar li.dropdown ul.dropdown-menu {
+    border-top-color: var(--hh-primary) !important;
+    border-radius: 0 0 6px 6px;
+}
+
+.display-name-menu,
+.nav-link div[style] {
+    background-color: var(--hh-primary-dark) !important;
+    border-color: var(--hh-primary-dark) !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary,
+.main-banner .btn.seub-btn,
+footer button.btn.btn-primary,
+button.btn.btn-primary,
+input.btn,
+.upload-btn,
+.btn.view-job {
+    background: var(--hh-primary) !important;
+    border-color: var(--hh-primary) !important;
+    border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.18);
+    color: #ffffff !important;
+}
+
+.btn-primary:hover,
+.main-banner .btn.seub-btn:hover,
+.upload-btn:hover,
+.btn.view-job:hover {
+    background: var(--hh-primary-dark) !important;
+    border-color: var(--hh-primary-dark) !important;
+    text-decoration: none;
+}
+
+.form-control {
+    background: #ffffff;
+    border: 1px solid var(--hh-border);
+    border-radius: 5px;
+    color: var(--hh-heading);
+}
+
+.form-control:focus {
+    border-color: var(--hh-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.login-wrapper {
+    background: var(--hh-bg);
+}
+
+.login-wrapper form,
+.company-list,
+.package-box,
+.features-content,
+.dashboard-panel,
+.metric-card {
+    background: var(--hh-surface) !important;
+    border: 1px solid var(--hh-border) !important;
+    border-radius: 8px !important;
+    box-shadow: var(--hh-shadow) !important;
+}
+
+.login-wrapper form {
+    padding: 34px;
+}
+
+.main-banner,
+.inner-banner,
+.dashboard-hero {
+    background-color: var(--hh-primary-dark) !important;
+}
+
+.main-banner:before,
+.inner-banner:before,
+.dashboard-hero:before {
+    background: rgba(15, 23, 42, 0.68) !important;
+}
+
+.main-banner fieldset {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 8px;
+    box-shadow: var(--hh-shadow);
+}
+
+.main-banner fieldset .form-control {
+    border-radius: 6px 0 0 6px;
+}
+
+.main-banner fieldset .seub-btn {
+    border-radius: 0 6px 6px 0;
+}
+
+.features,
+.jobs,
+.dashboard-wrap,
+.dark {
+    background: var(--hh-bg) !important;
+}
+
+.features-content span.box1,
+.metric-icon {
+    background: var(--hh-surface-soft) !important;
+    color: var(--hh-primary) !important;
+}
+
+.features-content:hover span.box1,
+.progress-fill,
+.status-pill,
+.full-time,
+.service-tag {
+    background: var(--hh-primary) !important;
+    color: #ffffff !important;
+}
+
+.progress-fill.dark {
+    background: var(--hh-accent) !important;
+}
+
+.company-logo {
+    background: var(--hh-surface-soft) !important;
+    color: var(--hh-primary-dark) !important;
+    border: 1px solid #d8e6ff;
+}
+
+.company-content h3,
+.metric-card h3,
+.dashboard-panel h3 {
+    color: var(--hh-heading) !important;
+}
+
+.company-name i,
+.company-location i,
+.package i,
+.inner-banner p span {
+    color: var(--hh-primary) !important;
+}
+
+.package,
+.status-pill {
+    background: var(--hh-accent-soft) !important;
+    color: var(--hh-accent) !important;
+}
+
+.progress-track {
+    background: #e8eef6 !important;
+}
+
+.recent-table th,
+.table th {
+    color: var(--hh-heading);
+}
+
+footer {
+    background: #111827 !important;
+}
+
+footer .copy-right {
+    background: #0b1120 !important;
+}
+
+footer h4,
+footer a:hover {
+    color: #ffffff !important;
+}
+
+footer ul li,
+footer ul li a {
+    color: #cbd5e1 !important;
+}
+
+footer button.btn.btn-primary {
+    background: var(--hh-accent) !important;
+    border-color: var(--hh-accent) !important;
+}
+
+.active a {
+    color: var(--hh-primary) !important;
+}
+
+.theme-message {
+    color: var(--hh-primary) !important;
+}
+
+.navbar-brand img.logo {
+    max-height: 54px;
+    width: auto;
+}
+
+.navbar.navbar-default .navbar-brand {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.login-wrapper img.img-responsive[src$="hirehub-logo-theme.svg"] {
+    max-height: 72px;
+    margin: 0 auto 24px;
+}
+
+.login-wrapper .container > .col-md-6 {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+    width: 100%;
+}
+
+.login-wrapper .form-control,
+.login-wrapper .form-control-file {
+    margin-bottom: 14px;
+}
+
+.login-wrapper form {
+    margin: 0 auto;
+    max-width: 680px;
+}
+
+footer {
+    padding: 0 !important;
+}
+
+footer .footer-main {
+    padding: 48px 15px 34px;
+}
+
+footer .footer-logo {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 46px;
+    margin-bottom: 18px;
+    padding: 4px 8px;
+    width: auto;
+}
+
+footer .footer-text {
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin: 0 0 18px;
+    max-width: 360px;
+}
+
+footer h4 {
+    color: #ffffff !important;
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+footer h4:after {
+    background: var(--hh-accent);
+    border-radius: 2px;
+    content: "";
+    display: block;
+    height: 3px;
+    margin-top: 9px;
+    width: 34px;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li i {
+    color: var(--hh-accent);
+    margin-right: 8px;
+    width: 15px;
+}
+
+footer .copy-right {
+    padding: 16px 0 !important;
+    text-align: center;
+}
+
+footer .copy-right p {
+    color: #94a3b8;
+    margin: 0;
+}
+
+footer .copy-right .developer-credit {
+    color: #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+.applicant-detail-btn {
+    box-shadow: none;
+    display: inline-block;
+    font-size: 13px;
+    margin-top: 10px;
+    padding: 8px 14px;
+    width: auto;
+}
+
+.company-content {
+    position: relative;
+}
+
+.applicant-list-actions {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.applicant-list-actions .status-select {
+    font-size: 16px;
+    min-width: 190px;
+}
+
+.applicant-list-actions .applicant-detail-btn {
+    min-width: 112px;
+    text-align: center;
+}
+
+.applicant-detail-section {
+    background: #f8fafc;
+}
+
+.applicant-detail-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    padding: 30px;
+}
+
+.applicant-detail-header {
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    gap: 18px;
+    margin-bottom: 24px;
+    padding-bottom: 22px;
+}
+
+.applicant-avatar {
+    align-items: center;
+    background: linear-gradient(135deg, var(--hh-primary), var(--hh-accent));
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    flex: 0 0 78px;
+    font-size: 38px;
+    font-weight: 800;
+    height: 78px;
+    justify-content: center;
+    width: 78px;
+}
+
+.applicant-detail-header h2 {
+    color: #0f172a;
+    font-size: 28px;
+    margin: 0 0 5px;
+}
+
+.applicant-detail-header p {
+    color: #64748b;
+    margin: 0 0 10px;
+}
+
+.applicant-detail-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detail-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.detail-item span {
+    color: #64748b;
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.detail-item strong {
+    color: #0f172a;
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.detail-full {
+    grid-column: 1 / -1;
+}
+
+.resume-download-btn {
+    margin-top: 4px;
+}
+
+.applicant-detail-actions {
+    margin-top: 22px;
+}
+
+@media (max-width: 767px) {
+    .login-wrapper .container > .col-md-6 {
+        max-width: 100%;
+    }
+
+    .login-wrapper form {
+        padding: 24px;
+    }
+
+    footer .footer-main {
+        padding: 36px 15px 20px;
+    }
+
+    .applicant-detail-card {
+        padding: 22px;
+    }
+
+    .applicant-detail-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .applicant-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .applicant-list-actions {
+        align-items: flex-start;
+        margin-bottom: 14px;
+        position: static;
+    }
+
+    .applicant-list-actions .status-select {
+        min-width: 170px;
+    }
+}
+
+.status-badge,
+.status-select {
+    border: 0;
+    border-radius: 20px;
+    color: #ffffff !important;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 7px 16px;
+}
+
+.status-select {
+    border-radius: 5px;
+    min-width: 170px;
+}
+
+.status-applied {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+.status-review {
+    background: #d97706 !important;
+    color: #ffffff !important;
+}
+
+.status-shortlisted {
+    background: #16a34a !important;
+    color: #ffffff !important;
+}
+
+.status-rejected {
+    background: #dc2626 !important;
+    color: #ffffff !important;
+}
+
+select.status-select option.status-applied {
+    background: #2563eb;
+}
+
+select.status-select option.status-review {
+    background: #d97706;
+}
+
+select.status-select option.status-shortlisted {
+    background: #16a34a;
+}
+
+select.status-select option.status-rejected {
+    background: #dc2626;
+}
+
+.service-tag.status-applied:before {
+    border-right-color: #2563eb !important;
+}
+
+.service-tag.status-review:before {
+    border-right-color: #d97706 !important;
+}
+
+.service-tag.status-shortlisted:before {
+    border-right-color: #16a34a !important;
+}
+
+.service-tag.status-rejected:before {
+    border-right-color: #dc2626 !important;
+}

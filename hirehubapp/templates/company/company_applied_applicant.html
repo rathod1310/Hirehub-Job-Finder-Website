@@ -1,4 +1,5 @@
 {% extends 'company/base.html' %}
+{% block title %}Applicants | HireHub Company{% endblock %}
 {% block content %}
 	
     <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -23,22 +24,25 @@
 					<div class="company-list">
 						<div class="row">
 							<div class="col-md-2 col-sm-2">
-								<div class="company-logo"style="width: 120px; height: 120px; color: #242c36; font-weight: bold; text-align: center; line-height: 120px; border-radius: 50%; display: inline-block; font-size: 120px; margin-top: 10px;">
+								<div class="company-logo"style="width: 120px;height: 120px;color: #242c36;font-weight: bold;text-align: center;line-height: 110px;border-radius: 50%;display: inline-block;font-size: 100px;margin-top: 10px;">
 								    {{ apply_jobs.name|slice:":1"|upper }}
 								</div>
 							</div>
 							<div class="col-md-10 col-sm-10">
 								<div class="company-content">
-									<h3>{{ apply_jobs.name }} Is Apply For {{ apply_jobs.title }}
+									<div class="applicant-list-actions">
 										<form action="{% url 'update_status' apply_jobs.pk %}" method="POST">
-            							{% csrf_token %}
-										<select name="status" class="full-time" onchange="this.form.submit()" style="margin-left:750px; font-size:18px; background-color: tomato;">
-											<option value="Applied" {% if apply_jobs.status == 'Applied' %}selected{% endif %}>Applied</option>
-											<option value="Under Review" {% if apply_jobs.status == 'Under Review' %}selected{% endif %}>Under Review</option>
-											<option value="Shortlisted" {% if apply_jobs.status == 'Shortlisted' %}selected{% endif %}>Shortlisted</option>
-											<option value="Rejected" {% if apply_jobs.status == 'Rejected' %}selected{% endif %}>Rejected</option>
-										</select>
-									</form>
+											{% csrf_token %}
+											<select name="status" class="status-select {% if apply_jobs.status == 'Applied' %}status-applied{% elif apply_jobs.status == 'Under Review' %}status-review{% elif apply_jobs.status == 'Shortlisted' %}status-shortlisted{% elif apply_jobs.status == 'Rejected' %}status-rejected{% endif %}" onchange="this.form.submit()">
+												<option class="status-applied" value="Applied" {% if apply_jobs.status == 'Applied' %}selected{% endif %}>Applied</option>
+												<option class="status-review" value="Under Review" {% if apply_jobs.status == 'Under Review' %}selected{% endif %}>Under Review</option>
+												<option class="status-shortlisted" value="Shortlisted" {% if apply_jobs.status == 'Shortlisted' %}selected{% endif %}>Shortlisted</option>
+												<option class="status-rejected" value="Rejected" {% if apply_jobs.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+											</select>
+										</form>
+										<a class="btn view-job applicant-detail-btn" href="{% url 'applicant_detail' apply_jobs.pk %}">View Details</a>
+									</div>
+									<h3>{{ apply_jobs.name }} Is Apply For {{ apply_jobs.title }}
 									</h3>
 									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ apply_jobs.company_name }}</span></p>
 								</div>

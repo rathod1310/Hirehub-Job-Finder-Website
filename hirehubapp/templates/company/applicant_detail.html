@@ -1,0 +1,73 @@
+{% extends 'company/base.html' %}
+{% block title %}Applicant Detail | HireHub Company{% endblock %}
+{% block content %}
+
+	<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
+		<div class="container">
+			<div class="caption">
+				<h2>Applicant Detail</h2>
+			</div>
+		</div>
+	</section>
+
+	<section class="jobs applicant-detail-section">
+		<div class="container">
+			<div class="applicant-detail-card">
+				<div class="applicant-detail-header">
+					<div class="applicant-avatar">
+						{{ apply_job.name|slice:":1"|upper }}
+					</div>
+					<div>
+						<h2>{{ apply_job.name }}</h2>
+						<p>Applied for <strong>{{ apply_job.title }}</strong></p>
+						<span class="status-badge {% if apply_job.status == 'Applied' %}status-applied{% elif apply_job.status == 'Under Review' %}status-review{% elif apply_job.status == 'Shortlisted' %}status-shortlisted{% elif apply_job.status == 'Rejected' %}status-rejected{% endif %}">{{ apply_job.status }}</span>
+					</div>
+				</div>
+
+				<div class="applicant-detail-grid">
+					<div class="detail-item">
+						<span>Job ID</span>
+						<strong>{{ apply_job.job_id }}</strong>
+					</div>
+					<div class="detail-item">
+						<span>Company</span>
+						<strong>{{ apply_job.company_name }}</strong>
+					</div>
+					<div class="detail-item">
+						<span>Email</span>
+						<strong>{{ apply_job.email }}</strong>
+					</div>
+					<div class="detail-item">
+						<span>Mobile</span>
+						<strong>+91 {{ apply_job.mobile }}</strong>
+					</div>
+					<div class="detail-item">
+						<span>City</span>
+						<strong>{{ apply_job.city }}</strong>
+					</div>
+					<div class="detail-item">
+						<span>Pincode</span>
+						<strong>{{ apply_job.pincode }}</strong>
+					</div>
+					<div class="detail-item detail-full">
+						<span>Address</span>
+						<strong>{{ apply_job.address }}</strong>
+					</div>
+					<div class="detail-item detail-full">
+						<span>CV / Resume</span>
+						{% if apply_job.resume %}
+							<a class="btn btn-primary resume-download-btn" href="{{ apply_job.resume.url }}" target="_blank">View CV</a>
+						{% else %}
+							<strong>No CV uploaded</strong>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="applicant-detail-actions">
+					<a class="btn view-job" href="{% url 'company_applied_applicant' %}">Back To Applicants</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}

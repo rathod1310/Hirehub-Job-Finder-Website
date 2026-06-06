@@ -4,11 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Jober Desk | Responsive Job Portal Template</title>
+        <title>{% block title %}HireHub Company{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
         <!-- All Plugin Css --> 
+		<link rel="icon" type="image/svg+xml" href="{% static 'img/favicon-theme.svg' %}">
 		<link rel="stylesheet" href="{% static 'css/plugins.css' %}">
 		
 		<!-- Style & Common Css --> 
@@ -19,7 +20,7 @@
 	<style type="text/css">
 .active a {
     font-weight: 7000;          
-    color: red !important;     
+    color: #2563eb !important;     
     text-transform: uppercase;
     letter-spacing: 1px; 
 }
@@ -35,7 +36,7 @@
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
 						<i class="fa fa-bars"></i>
 					</button>
-					<a class="navbar-brand" href="{% url 'company_home' %}"><img src="/static/img/hirehub-logo.png" class="logo" alt=""></a>
+					<a class="navbar-brand" href="{% url 'company_home' %}"><img src="{% static 'img/hirehub-logo-theme.svg' %}" class="logo" alt="HireHub"></a>
 				</div>
 				<!-- End Header Navigation -->
 
@@ -77,43 +78,42 @@
 
 <!-- footer start -->
 		<footer>
-			<div class="container">
-				<div class="col-md-3 col-sm-6">
-					<h4>Featured Job</h4>
+			<div class="container footer-main">
+				<div class="col-md-4 col-sm-6">
+					<img src="{% static 'img/hirehub-logo-theme.svg' %}" class="footer-logo" alt="HireHub">
+					<p class="footer-text">HireHub connects talent and hiring teams through one simple, professional job platform.</p>
+				</div>
+				
+				<div class="col-md-2 col-sm-6">
+					<h4>Quick Links</h4>
 					<ul>
-						<li><a href="#">Browse Jobs</a></li>
-						<li><a href="#">Premium MBA Jobs</a></li>
+						<li><a href="{% url 'company_home' %}">Dashboard</a></li>
+						<li><a href="{% url 'post_job' %}">Post Job</a></li>
+						<li><a href="{% url 'company_show_all_jobs' %}">Posted Jobs</a></li>
 					</ul>
 				</div>
 				
-				<div class="col-md-3 col-sm-6">
-					<h4>Latest Job</h4>
+				<div class="col-md-2 col-sm-6">
+					<h4>Account</h4>
 					<ul>
-						<li><a href="#">Browse Jobs</a></li>
-						<li><a href="#">Premium MBA Jobs</a></li>
+						<li><a href="{% url 'company_applied_applicant' %}">Applicants</a></li>
+						<li><a href="{% url 'export_applied_jobs_csv' %}">Export CSV</a></li>
+						<li><a href="{% url 'logout' %}">Logout</a></li>
 					</ul>
 				</div>
 				
-				<div class="col-md-3 col-sm-6">
-					<h4>Reach Us</h4>
+				<div class="col-md-4 col-sm-6">
+					<h4>Contact</h4>
 					<ul>
-					<li>Email: Support@job.com</li>
-					<li>Call: 044 123 458 65879</li>
+						<li><i class="fa fa-envelope"></i> support@hirehub.com</li>
+						<li><i class="fa fa-phone"></i> +91 98765 43210</li>
+						<li><i class="fa fa-map-marker"></i> Ahmedabad, India</li>
 					</ul>
 				</div>
-				
-				<div class="col-md-3 col-sm-6">
-					<h4>Drop A Mail</h4>
-					<form>
-						<input type="text" class="form-control input-lg" placeholder="Email...">
-						<button type="submit" class="btn btn-primary">Login</button>
-					</form>
-				</div>
-				
-				
 			</div>
 			<div class="copy-right">
-			 <p>&copy;Copyright 2025 HireHub | Design By <a href="#">H i r e H u b</a></p>
+			 <p>&copy; 2026 HireHub. All rights reserved.</p>
+			 <p class="developer-credit">Developed by Om Rathod</p>
 			</div>
 		</footer>
 		 

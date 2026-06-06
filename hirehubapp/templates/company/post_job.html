@@ -1,4 +1,5 @@
 {% extends 'company/base.html' %}
+{% block title %}Post Job | HireHub Company{% endblock %}
 {% block content %}
 		<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
 		<div class="container">
@@ -44,7 +45,7 @@
                     {% endif %}
                     <form name="post_job" method="post" action="{% url 'post_job' %}" enctype="multipart/form-data">
                     {% csrf_token %}
-					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+					<img class="img-responsive" alt="HireHub" src="/static/img/hirehub-logo-theme.svg">
 					
 					<input class="form-control" type="text" placeholder="Company Name" name="company_name" value="{{ users.fname }} {{ users.lname }}" readonly>
 				
@@ -56,18 +57,41 @@
               
                         <input class="form-control" type="number" name="salary" placeholder="Salary">
               
-                        <input class="form-control" type="text" name="jobtype" placeholder="Job Type(Intenship,Part-Time,Full Time)">
+                        <select class="form-control" name="jobtype" required>
+                            <option value="">Select Job Type</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Part-Time">Part-Time</option>
+                            <option value="Full Time">Full Time</option>
+                        </select>
               
                         <input class="form-control" type="datetime-local" name="posted_at" placeholder="Posted Date">
               
                         <input class="form-control" type="text" name="skills" placeholder="Skills">
               
-                        <input class="form-control" type="number" name="experience" placeholder="Experience">
+                        <select class="form-control" name="experience" required>
+                            <option value="">Select Experience</option>
+                            <option value="fresher">Fresher</option>
+                            <option value="1">1+ Year</option>
+                            <option value="2">2+ Years</option>
+                            <option value="3">3+ Years</option>
+                            <option value="4">4+ Years</option>
+                            <option value="5">5+ Years</option>
+                            <option value="6">6+ Years</option>
+                            <option value="7">7+ Years</option>
+                            <option value="8">8+ Years</option>
+                            <option value="9">9+ Years</option>
+                            <option value="10">10+ Years</option>
+                        </select>
 
-                        <input class="form-control" type="text" name="category" placeholder="Work Mode(Hybriod,On-Site,Remote)">
+                        <select class="form-control" name="category" required>
+                            <option value="">Select Work Mode</option>
+                            <option value="On-Site">On-Site</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Remote">Remote</option>
+                        </select>
                   
 
-						<button type="submit" class="btn btn-primary" style="background-color:#da0833">Post Job</button>
+						<button type="submit" class="btn btn-primary">Post Job</button>
 					</form>
 				</div>
 			</div>

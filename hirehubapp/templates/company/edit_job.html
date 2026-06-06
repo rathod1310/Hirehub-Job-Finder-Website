@@ -1,4 +1,5 @@
 {% extends 'company/base.html' %}
+{% block title %}Edit Job | HireHub Company{% endblock %}
 {% block content %}
 		<section class="inner-banner" style="backend:#242c36 url(/static/img/download.jpg)no-repeat;">
 		<div class="container">
@@ -16,7 +17,7 @@
                     {% endif %}
                     <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+					<img class="img-responsive" alt="HireHub" src="/static/img/hirehub-logo-theme.svg">
 					
 					<input class="form-control" type="text" placeholder="Company Name" name="company_name" value="{{ job.company_name }} {{ users.lname }}" readonly>
 				
@@ -28,18 +29,41 @@
               
                         <input class="form-control" type="number" name="salary" placeholder="Salary" value="{{ job.salary }}">
               
-                        <input class="form-control" type="text" name="jobtype" placeholder="Job Type(Intenship,Part-Time,Full Time)" value="{{ job.jobtype }}">
+                        <select class="form-control" name="jobtype" required>
+                            <option value="">Select Job Type</option>
+                            <option value="Internship" {% if job.jobtype == 'Internship' %}selected{% endif %}>Internship</option>
+                            <option value="Part-Time" {% if job.jobtype == 'Part-Time' %}selected{% endif %}>Part-Time</option>
+                            <option value="Full Time" {% if job.jobtype == 'Full Time' %}selected{% endif %}>Full Time</option>
+                        </select>
               
-                        <input class="form-control" type="datetime-local" name="posted_at" placeholder="Posted Date" value="{{ job.posted_at }}">
+                        <input class="form-control" type="datetime-local" name="posted_at" placeholder="Posted Date" value="{{ job.posted_at|date:'Y-m-d\\TH:i' }}">
               
                         <input class="form-control" type="text" name="skills" placeholder="Skills" value="{{ job.skills }}">
               
-                        <input class="form-control" type="number" name="experience" placeholder="Experience" value="{{ job.experience }}">
+                        <select class="form-control" name="experience" required>
+                            <option value="">Select Experience</option>
+                            <option value="fresher" {% if job.experience == 'fresher' %}selected{% endif %}>Fresher</option>
+                            <option value="1" {% if job.experience == '1' %}selected{% endif %}>1+ Year</option>
+                            <option value="2" {% if job.experience == '2' %}selected{% endif %}>2+ Years</option>
+                            <option value="3" {% if job.experience == '3' %}selected{% endif %}>3+ Years</option>
+                            <option value="4" {% if job.experience == '4' %}selected{% endif %}>4+ Years</option>
+                            <option value="5" {% if job.experience == '5' %}selected{% endif %}>5+ Years</option>
+                            <option value="6" {% if job.experience == '6' %}selected{% endif %}>6+ Years</option>
+                            <option value="7" {% if job.experience == '7' %}selected{% endif %}>7+ Years</option>
+                            <option value="8" {% if job.experience == '8' %}selected{% endif %}>8+ Years</option>
+                            <option value="9" {% if job.experience == '9' %}selected{% endif %}>9+ Years</option>
+                            <option value="10" {% if job.experience == '10' %}selected{% endif %}>10+ Years</option>
+                        </select>
 
-                        <input class="form-control" type="text" name="category" placeholder="Work Mode(Hybriod,On-Site,Remote)" value="{{ job.category }}">
+                        <select class="form-control" name="category" required>
+                            <option value="">Select Work Mode</option>
+                            <option value="On-Site" {% if job.category == 'On-Site' %}selected{% endif %}>On-Site</option>
+                            <option value="Hybrid" {% if job.category == 'Hybrid' %}selected{% endif %}>Hybrid</option>
+                            <option value="Remote" {% if job.category == 'Remote' %}selected{% endif %}>Remote</option>
+                        </select>
                   
 
-						<button type="submit" class="btn btn-primary" style="background-color:#da0833">Post Job</button>
+						<button type="submit" class="btn btn-primary">Post Job</button>
 					</form>
 				</div>
 			</div>

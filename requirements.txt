@@ -1,0 +1,6 @@
+Django==5.2
+pandas
+openpyxl
+PyMySQL
+django-semantic-admin
+django-semantic-forms

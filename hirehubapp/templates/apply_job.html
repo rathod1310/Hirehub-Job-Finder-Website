@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% block title %}Apply Job | HireHub{% endblock %}
 {% block content %}
 		
 		<!-- login section start -->
@@ -10,7 +11,7 @@
                     {% endif %}
                     <form name="apply_job" method="post" action="#" enctype="multipart/form-data">
                     {% csrf_token %}
-					<img class="img-responsive" alt="logo" src="/static/img/logo.png">
+					<img class="img-responsive" alt="HireHub" src="/static/img/hirehub-logo-theme.svg">
 
                            <input type="text" class="form-control" id="job_id" value="{{ jobs.job_id }}"
                                 name="job_id" readonly>
